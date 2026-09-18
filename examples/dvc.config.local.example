@@ -1,0 +1,18 @@
+# Copy into the consumer repo:  cp examples/dvc.config.local.example <repo>/.dvc/config.local
+# Or run:                        ./bin/setup_dvc_remote.sh
+#
+# This file is gitignored. It overrides the `arc` remote URL from .dvc/config
+# so laptop vs cluster paths do not leak into git.
+#
+# Store layout: /data/<ARC_PROJECT>/<USER>/dvc-store
+# (project shared by the group; each user has their own dvc-store)
+
+# --- On a laptop (VPN / Uni net) ---
+# ['remote "arc"']
+#     url = ssh://YOUR_ARC_USER@htc-login.arc.ox.ac.uk/data/YOUR_ARC_PROJECT/YOUR_ARC_USER/dvc-store
+#     user = YOUR_ARC_USER
+
+# --- On ARC ($DATA is already /data/<project>/<user>) ---
+# ['remote "arc"']
+#     url = /data/YOUR_ARC_PROJECT/YOUR_ARC_USER/dvc-store
+#     # or simply: url = $DATA/dvc-store
